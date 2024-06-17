@@ -43,6 +43,7 @@ const Update = async (req, res) => {
         }
     }
 }
+
 const Delete = async (req, res) => {
     const id = req.params.id;
 
@@ -56,5 +57,15 @@ const Delete = async (req, res) => {
     }
 }
 
-module.exports = { Post, Get, Update, Delete };
+const GetOnePost = async (req, res) => {
+    const id = req.params.id;
+     try {
+    const post = await PostModel.findById(id);
+      res.status(200).json(post)
+  } catch (error) {
+    res.status(500).json(error);
+  }
+}
+
+module.exports = { Post, Get, Update, Delete ,GetOnePost };
 
