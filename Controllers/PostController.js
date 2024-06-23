@@ -31,16 +31,20 @@ const Get = async (req, res) => {
 const Update = async (req, res) => {
     const id = req.params.id;
     const { _id } = req.body;
-        try {
-        const post= await PostModel.findById(id)
-        if (post.id === _id ) {
-            await post.updateOne({ $set: req.body });
-           res.status(200).json(post);
 
-        } catch (error) {
-            res.status(500).json(error);
-   }
-    
+    try {
+        const post = await PostModel.findById(id)
+        if (post.id === _id) {
+            await post.updateOne({ $set: req.body });
+            res.status(200).json(post);
+
+        }
+
+    } catch (error) {
+        res.status(500).json(error);
+
+    }
+
 }
 
 const Delete = async (req, res) => {
