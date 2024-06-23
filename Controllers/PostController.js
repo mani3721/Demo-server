@@ -34,7 +34,7 @@ const Update = async (req, res) => {
 
     if (id === _id) {
         try {
-            const post = await PostModel.findByIdAndUpdate(id, req.body)
+            await const post = await PostModel.findByIdAndUpdate(id, req.body)
             res.status(200).json(post);
 
         } catch (error) {
